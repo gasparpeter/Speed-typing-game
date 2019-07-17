@@ -6,7 +6,9 @@ const levels = {
     hard: 2
 };
 
-let time = 5;
+const currentLevel = levels.easy;
+
+let time = currentLevel;
 let score = 0;
 let isPlaying;
 
@@ -14,7 +16,7 @@ let isPlaying;
 const wordInput = document.querySelector("#word-input");
 const currentWord = document.querySelector("#current-word");
 const scoreDisplay = document.querySelector("#score");
-const timeDisplay = document.querySelector("#time-display");
+const timeDisplay = document.querySelector("#time");
 const message = document.querySelector("#message");
 const seconds = document.querySelector("#seconds");
 
@@ -47,6 +49,9 @@ const words = [
 ];
 
 function init() {
+
+    seconds.innerHTML = currentLevel;
+
     console.log("init");
     showWord(words);
 
@@ -60,7 +65,7 @@ function init() {
 function startMatch() {
     if (matchWords()) {
         isPlaying = true;
-        time = 6;
+        time = currentLevel + 1;
         showWord(words);
         wordInput.value = '';
         score++;
@@ -96,7 +101,7 @@ function countdown() {
     }else if (time === 0) {
         isPlaying = false;
     }
-    timeDisplay.innerHTML = score;
+    timeDisplay.innerHTML = time;
 }
 
 function checkStatus() {
