@@ -1,3 +1,5 @@
+window.addEventListener('load', init);
+
 let time = 5;
 let score = 0;
 let isPlaying;
@@ -37,3 +39,14 @@ const words = [
     'space',
     'definition'
 ];
+
+function init() {
+    console.log("init");
+    showWord(words);
+}
+
+function showWord(words) {
+    const randIndex = Math.floor(Math.random() * words.length);
+
+    currentWord.innerHTML = words[randIndex];
+}
